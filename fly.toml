@@ -1,12 +1,8 @@
-# fly.toml app configuration file generated for backend-dry-glade-5837 on 2025-06-08T22:14:22+01:00
-#
-# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
-#
-
 app = 'backend-dry-glade-5837'
 primary_region = 'jnb'
 
 [build]
+  command = "npm run start"
 
 [http_service]
   internal_port = 3000
