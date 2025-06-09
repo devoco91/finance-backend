@@ -24,4 +24,7 @@ app.use("/auth", authRoutes);
 app.use("/transactions", transactionRoutes);
 app.use("/user", userRoutes);
 
+// Health check route
+app.get("/", (_, res) => res.send("✅ Backend is running"));
+
 app.listen(3000, () => console.log("Server running on http://localhost:3000"));
