@@ -1,4 +1,3 @@
-// middleware/auth.js
 const jwt = require("jsonwebtoken");
 
 function auth(req, res, next) {
@@ -9,6 +8,11 @@ function auth(req, res, next) {
     }
     const token = authHeader.split(" ")[1];
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+    if (!decoded.userId) {
+      return res.status(403).json({ error: "Invalid token payload" });
+    }
+
     req.userId = decoded.userId;
     console.log("Decoded JWT:", decoded); // Remove in production
     next();
@@ -18,4 +22,3 @@ function auth(req, res, next) {
 }
 
 module.exports = auth;
-
