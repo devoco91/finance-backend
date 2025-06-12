@@ -12,7 +12,12 @@ const userRoutes = require("./routes/user");
 
 const app = express();
 
-const allowedOrigins = [
+const allowedOrigins = process.env.NODE_ENV === 'production' ? [
+  'https://bank-frontend-chi.vercel.app',
+  'https://www.wavesfinance.org',
+  'https://wavesfinance.org',
+] : [
+  'http://localhost:5173',  // Allow local dev origin
   'https://bank-frontend-chi.vercel.app',
   'https://www.wavesfinance.org',
   'https://wavesfinance.org',
